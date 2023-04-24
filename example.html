@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <title>hello</title>
+        
+    </head>
+    <body>
+        <form id="form">
+        <label>name</label>
+        <input type="text" id="inputName" required/>
+        <br>
+        <button type="submit">save</button>
+    </form>
+
+    <!--Script Start-->
+
+    <script>
+        $(document).ready(function(){
+            $("#form").on("submit", function(event){
+                event.preventDefault();
+
+                //decare input value
+                var name = $("#inputName").val();
+
+                $.ajax({
+                    url : "example.php",
+                    type : "POST",
+                    data : {name : name},
+                    success : function(response){
+                        alert("It is inserted");
+                    },
+                    error : function(error){
+                        console.error(error);
+                        alert("Error");
+                    }
+
+
+                })
+
+            });
+
+        });
+
+
+
+
+    </script>
+
+    </body>
+</html>
